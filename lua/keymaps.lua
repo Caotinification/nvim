@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
-
+-- Inserting newlines before/after cursor
 vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = 'New line before cursor' })
 vim.keymap.set('n', 'go', "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>", { desc = 'New line after cursor' })
 --Navigate buffers
@@ -53,4 +53,6 @@ vim.keymap.set('n', '<C-Right>', ':bnext<CR>', { noremap = true, silent = true }
 -- Navigate Tabs
 vim.keymap.set('n', '<C-S-Left>', ':tabprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-S-Right>', ':tabnext<CR>', { noremap = true, silent = true })
+-- Open diagnostics
+vim.keymap.set('n', 'g?', '<cmd>lua vim.diagnostic.open_float()<CR>', { silent = true, desc = 'Show Line Diagnostics' })
 -- vim: ts=2 sts=2 sw=2 et
