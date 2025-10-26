@@ -10,7 +10,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.termguicolors = true
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
+vim.o.mouse = ''
 vim.o.linebreak = true
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
@@ -89,5 +89,6 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 -- Neovide specific settings
 if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = { 'torpedo', 'ripple' }
+  vim.g.neovide_cursor_smooth_blink = true
 end
 -- vim: ts=2 sts=2 sw=2 et
