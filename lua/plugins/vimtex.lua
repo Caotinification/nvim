@@ -19,11 +19,13 @@ return {
         '-interaction=nonstopmode',
       },
     }
+    vim.g.vimtex_parser_bib_backend = 'lua'
     vim.g.vimtex_quickfix_ignore_filters = {
       'You have requested package',
       'Underfull',
       'Overfull',
     }
-    vim.g.vimtex_quickfix_open_on_warning = 0
+    vim.g.vimtex_fold_enabled = true
+    vim.g.vimtex_quickfix_open_on_warning = false
   end,
 }
