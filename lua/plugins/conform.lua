@@ -29,9 +29,14 @@ return {
           }
         end
       end,
+      formatters = {
+        ocaml = {
+          command = 'ocamlformat',
+          args = { '-m 139' },
+        },
+      },
       formatters_by_ft = {
         lua = { 'stylua' },
-        ocaml = { 'ocamlformat' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
