@@ -64,7 +64,7 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+vim.o.scrolloff = 99
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -73,6 +73,7 @@ vim.o.confirm = true
 
 -- Save folds upon close.
 vim.api.nvim_create_autocmd('BufWinLeave', {
+  desc = 'Save folds upon close.',
   pattern = '*.*',
   callback = function()
     vim.cmd 'mkview'
@@ -80,12 +81,33 @@ vim.api.nvim_create_autocmd('BufWinLeave', {
 })
 -- Load them
 vim.api.nvim_create_autocmd('BufWinEnter', {
+  desc = 'Load folds upon opening.',
   pattern = '*.*',
   callback = function()
     vim.cmd 'silent! loadview'
   end,
 })
+-- Keep cursor position while yanking
+local cursorPreYank
 
+vim.keymap.set({ 'n', 'x' }, 'y', function()
+  cursorPreYank = vim.api.nvim_win_get_cursor(0)
+  return 'y'
+end, { expr = true })
+
+vim.keymap.set('n', 'Y', function()
+  cursorPreYank = vim.api.nvim_win_get_cursor(0)
+  return 'y$'
+end, { expr = true })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Keep cursor position while yanking.',
+  callback = function()
+    if vim.v.event.operator == 'y' and cursorPreYank then
+      vim.api.nvim_win_set_cursor(0, cursorPreYank)
+    end
+  end,
+})
 -- Neovide specific settings
 if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = { 'torpedo', 'ripple' }
