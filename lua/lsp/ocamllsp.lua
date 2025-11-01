@@ -73,6 +73,14 @@ local root_markers3 = { '.git' }
 return {
   cmd = { 'ocamllsp' },
   filetypes = { 'ocaml', 'menhir', 'ocamlinterface', 'ocamllex', 'reason', 'dune' },
+  settings = {
+    codelens = {
+      enable = true,
+      forNestedBindings = { enable = true },
+    },
+    inlayHints = { enable = true },
+    syntaxDocumentation = { enable = true },
+  },
   root_markers = vim.fn.has 'nvim-0.11.3' == 1 and { root_markers1, root_markers2, root_markers3 }
     or vim.list_extend(vim.list_extend(root_markers1, root_markers2), root_markers3),
   get_language_id = get_language_id,
