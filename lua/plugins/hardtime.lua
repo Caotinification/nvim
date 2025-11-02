@@ -4,8 +4,8 @@ return {
   dependencies = { 'MunifTanjim/nui.nvim' },
   opts = {
     disabled_keys = {
-      ['<j>'] = false,
-      ['<k>'] = false,
+      ['j'] = false,
+      ['k'] = false,
     },
   },
 }
