@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 -- Inserting newlines before/after cursor
-vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = 'New line before cursor' })
+-- vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = 'New line before cursor' })
 vim.keymap.set('n', 'go', "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>", { desc = 'New line after cursor' })
 --Navigate buffers
 vim.keymap.set('n', '<C-Left>', ':bprev<CR>', { noremap = true, silent = true })
