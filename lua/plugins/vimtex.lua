@@ -25,7 +25,7 @@ return {
       'Underfull',
       'Overfull',
     }
-    vim.g.vimtex_fold_enabled = true
+    -- vim.g.vimtex_fold_enabled = true
     vim.g.vimtex_quickfix_open_on_warning = false
   end,
 }
